@@ -7,7 +7,6 @@ public class Contact extends BaseEntity{
 
 	private String firstName;
 	private String lastName;
-	private String groupIds;
 
 	public String getFirstName() {
 		return firstName;
@@ -24,13 +23,4 @@ public class Contact extends BaseEntity{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public String getGroupIds() {
-		return groupIds;
-	}
-
-	public void setGroupIds(String groupIds) {
-		this.groupIds = groupIds;
-	}
-
 }

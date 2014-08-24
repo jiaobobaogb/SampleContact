@@ -8,7 +8,7 @@ import com.britesnow.snow.web.param.annotation.WebParam;
 import com.britesnow.snow.web.rest.annotation.WebPost;
 import com.google.inject.Singleton;
 import com.samplecontact.dao.GroupDao;
-import com.samplecontact.entity.Group;
+import com.samplecontact.entity.Groups;
 
 @Singleton
 public class GroupWebHandler {
@@ -17,14 +17,14 @@ public class GroupWebHandler {
 	private GroupDao groupDao;
 
 	@WebPost("/group/listAllGroups")
-	public List<Group> listAllGroups() {
-		List<Group> groups = groupDao.listGroups();
+	public List<Groups> listAllGroups() {
+		List<Groups> groups = groupDao.listGroups();
 		return groups;
 	}
 
 	@WebPost("/group/getGroupInfo")
-	public Group getGroupInfo(@WebParam("groupId") Long groupId) {
-		Group group = groupDao.getGroup(groupId);
+	public Groups getGroupInfo(@WebParam("groupId") Long groupId) {
+		Groups group = groupDao.getGroup(groupId);
 		return group;
 	}
 

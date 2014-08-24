@@ -3,7 +3,7 @@ package com.samplecontact.entity;
 import javax.persistence.Entity;
 
 @Entity
-public class Group extends BaseEntity{
+public class Groups extends BaseEntity{
 
 	private String groupName;
 

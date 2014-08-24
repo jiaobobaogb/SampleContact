@@ -5,33 +5,22 @@ import javax.persistence.Entity;
 @Entity
 public class Relation extends BaseEntity{
 
-	private Long contatId;
+	private Long contactId;
 	private Long groupId;
 	
-	/**
-	 * @return the contatId
-	 */
-	public Long getContatId() {
-		return contatId;
+	public Long getContactId() {
+		return contactId;
 	}
-	/**
-	 * @param contatId the contatId to set
-	 */
-	public void setContatId(Long contatId) {
-		this.contatId = contatId;
+
+	public void setContactId(Long contactId) {
+		this.contactId = contactId;
 	}
-	/**
-	 * @return the groupId
-	 */
+
 	public Long getGroupId() {
 		return groupId;
 	}
-	/**
-	 * @param groupId the groupId to set
-	 */
+
 	public void setGroupId(Long groupId) {
 		this.groupId = groupId;
 	}
-
-	
 }

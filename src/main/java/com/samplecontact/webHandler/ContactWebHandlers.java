@@ -1,6 +1,7 @@
 package com.samplecontact.webHandler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,7 +12,7 @@ import com.google.common.base.Strings;
 import com.google.inject.Singleton;
 import com.samplecontact.dao.ContactDao;
 import com.samplecontact.entity.Contact;
-import com.samplecontact.entity.Group;
+import com.samplecontact.entity.Groups;
 
 @Singleton
 public class ContactWebHandlers {
@@ -26,14 +27,23 @@ public class ContactWebHandlers {
 	}
 
 	@WebPost("/contact/listContacts")
-	public List<Contact> listContacts() {
+	public List<HashMap> listContacts() {
 		List<Contact> contacts = contactDao.listContacts();
-		return contacts;
+		List<HashMap> results= new ArrayList<HashMap>();
+		for(int i = 0, j = contacts.size(); i < j; i++){
+			HashMap contact = new HashMap();
+			contact.put("id", contacts.get(i).getId());
+			contact.put("firstName", contacts.get(i).getFirstName());
+			contact.put("lastName", contacts.get(i).getLastName());
+			contact.put("groups", contactDao.getContactGroups(contacts.get(i).getId()));
+			results.add(contact);
+		}
+		return results;
 	}
 
 	@WebPost("/contact/listContactGroups")
-	public List<Group> listContactGroups(@WebParam("contactId") Long contactId) {
-		List<Group> contactGroups = contactDao.getContactGroups(contactId);
+	public List<Groups> listContactGroups(@WebParam("contactId") Long contactId) {
+		List<Groups> contactGroups = contactDao.getContactGroups(contactId);
 		return contactGroups;
 	}
 

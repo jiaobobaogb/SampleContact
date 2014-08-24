@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import com.google.inject.Singleton;
 import com.samplecontact.entity.Contact;
-import com.samplecontact.entity.Group;
+import com.samplecontact.entity.Groups;
 
 @Singleton
 public class ContactDao extends BaseHibernateDao<Contact>{
@@ -54,19 +54,25 @@ public class ContactDao extends BaseHibernateDao<Contact>{
 	}
 	
 	public boolean setContactGroups(Long contactId, ArrayList<Long> groupIds) {
-		for(Long groupId : groupIds){
-			relationDao.saveRelation(contactId, groupId);
+		if(groupIds != null && groupIds.size() > 0){
+			relationDao.deleteContact(contactId);
+			for(Long groupId : groupIds){
+				relationDao.saveRelation(contactId, groupId);
+			}
+		}else{
+			relationDao.deleteContact(contactId);
 		}
 		return true;
 	}
 	
-	
-	public List<Group> getContactGroups(Long contactId){
+	public List<Groups> getContactGroups(Long contactId){
 		List<Long> groupIds = relationDao.listContactGroupIds(contactId);
-		List<Group> groups = new ArrayList<Group>();
-		for(Long groupId : groupIds){
-			Group group = groupDao.get(groupId);
-			groups.add(group);
+		List<Groups> groups = new ArrayList<Groups>();
+		if(groupIds != null && groupIds.size() > 0){
+			for(Long groupId : groupIds){
+				Groups group = groupDao.get(groupId);
+				groups.add(group);
+			}
 		}
 		return groups;
 	}
