@@ -11,21 +11,13 @@ public class AppConfig extends AbstractModule{
 
 	@Override
 	protected void configure() {
-		System.out.println("success");
+		System.out.println("start up");
 	}
 	
-	 // Used by the Snow Hibernate helpers to inject the entity class
-    // Just need to provide the @EntityClasses
     @Provides
     @Singleton
     @EntityClasses
     public Class[] provideEntityClasses() {
-        // The simplest implementation, would be to hardcode like
-        // return new Class[]{com.example.samplebookmarks.entity.User.class,
-        //                    com.example.samplebookmarks.entity.Item.class};
-        
-        // However, with few more line of code, we can have a maintenance free implementation 
-        // by scanning the application entity.* java package.
         try {
             return new PackageScanner(BaseEntity.class.getPackage().getName()).findAnnotatedClasses(javax.persistence.Entity.class);
         } catch (Throwable e) {

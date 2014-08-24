@@ -138,17 +138,6 @@ var app = app || {};
 			return val;
 		});
 	};
-	
-	RemoteDAOHandler.prototype.getContactGroups = function(contactId) {
-			return $.ajax({
-				type : "POST",
-				url : "contact/listContactGroups",
-				data : {contactId : contactId},
-				dataType : "json"
-			}).pipe(function(val) {
-				return val;
-			});
-	};
 
 	RemoteDAOHandler.prototype.setContactGroup = function(contactId, groupIds) {
 		var data = {

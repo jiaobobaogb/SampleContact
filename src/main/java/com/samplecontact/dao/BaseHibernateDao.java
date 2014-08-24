@@ -36,16 +36,11 @@ public abstract class BaseHibernateDao<E> implements IDao<E> {
     // --------- IDao Interface --------- //
     @Override
     public E get(Long id) {
-        // TODO Auto-generated method stub
         return daoHelper.get(entityClass, id);
     }
 
-    /**
-     * TODO: not implemented yet (not needed).
-     */
     @Override
     public List<E> get(Long... ids) {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -62,7 +57,6 @@ public abstract class BaseHibernateDao<E> implements IDao<E> {
         for (E e : entities) {
             save(e);
         }
-        // TODO: we need to determine who will build this list (probably the DAOHelper)
         return null;
     }
 
@@ -170,7 +164,6 @@ public abstract class BaseHibernateDao<E> implements IDao<E> {
 
     @Override
     public Class<E> getPersistentClass() {
-        // TODO Auto-generated method stub
         return entityClass;
     }
     // --------- IDao Interface --------- //

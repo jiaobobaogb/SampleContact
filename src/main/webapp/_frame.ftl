@@ -17,9 +17,8 @@
 	[@webBundle path="/css/" type="css" /]
 
   </head>
-
   <body>
-  
+ 
     <div id = "mainview" ></div>
 		<script type="text/javascript">
 			var $mainview = $("body").find("#mainview");
