@@ -1,8 +1,10 @@
 package com.samplecontact.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="contact_t")
 public class Contact extends BaseEntity{
 
 	private String firstName;

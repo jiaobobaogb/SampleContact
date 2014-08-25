@@ -1,6 +1,6 @@
-brite.registerView("GroupOperate", {emptyParent:false}, {
+brite.registerView("GroupDialog", {emptyParent:false}, {
 	create: function(data,config){
-		return render("tmpl-GroupOperate", {data : data});
+		return render("tmpl-GroupDialog", {data : data});
    },
    
    postDisplay: function(){

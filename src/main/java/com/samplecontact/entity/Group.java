@@ -1,9 +1,11 @@
 package com.samplecontact.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class Groups extends BaseEntity{
+@Table(name="group_t")
+public class Group extends BaseEntity{
 
 	private String groupName;
 

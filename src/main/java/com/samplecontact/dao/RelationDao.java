@@ -11,7 +11,7 @@ import com.samplecontact.entity.Relation;
 public class RelationDao extends BaseHibernateDao<Relation>{
 
 	public Relation getRelation (Long id) {
-		Relation group = (Relation) get(id);
+		Relation group = daoHelper.get(entityClass, id);
 		return group;
 	}
 	
@@ -19,21 +19,21 @@ public class RelationDao extends BaseHibernateDao<Relation>{
 		Relation relation = new Relation();
 		relation.setContactId(contactId);
 		relation.setGroupId(groupId);
-		save(relation);
+		daoHelper.save(relation);
 		return true;
 	}
 
 	public boolean updateRelation (Long id, Long contactId, Long groupId) {
-		Relation relation = get(id);
+		Relation relation = daoHelper.get(entityClass, id);
 		relation.setContactId(contactId);
 		relation.setGroupId(groupId);
-		update(relation);
+		daoHelper.save(relation);
 		return true;
 	}
 
 	public boolean deleteRelation (Long relationId) {
 		Relation relation = getRelation(relationId);
-		delete(relation);
+		daoHelper.delete(relation);
 		return true;
 	}
 	

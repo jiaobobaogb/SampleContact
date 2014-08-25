@@ -12,7 +12,7 @@ import com.google.common.base.Strings;
 import com.google.inject.Singleton;
 import com.samplecontact.dao.ContactDao;
 import com.samplecontact.entity.Contact;
-import com.samplecontact.entity.Groups;
+import com.samplecontact.entity.Group;
 
 @Singleton
 public class ContactWebHandlers {
@@ -42,8 +42,8 @@ public class ContactWebHandlers {
 	}
 
 	@WebPost("/contact/listContactGroups")
-	public List<Groups> listContactGroups(@WebParam("contactId") Long contactId) {
-		List<Groups> contactGroups = contactDao.getContactGroups(contactId);
+	public List<Group> listContactGroups(@WebParam("contactId") Long contactId) {
+		List<Group> contactGroups = contactDao.getContactGroups(contactId);
 		return contactGroups;
 	}
 

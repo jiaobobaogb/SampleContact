@@ -8,13 +8,13 @@ brite.registerView("GroupView", {emptyParent:true}, {
    },
    events: {
 		   "click; button.add": function(event){
-		         brite.display("GroupOperate",$mainview,{title : "Add Group"});
+		         brite.display("GroupDialog",$mainview,{title : "Add Group"});
 		       },
 	       
 	       "click; button.edit": function(event){
 	    	   var groupId = $(event.target).closest("tr").attr("data-group-id");
 	    	   app.RemoteDAOHandler.getGroupInfo(groupId).pipe(function(group) {
-	    		   brite.display("GroupOperate",$mainview,{title : "Edit Group",group : group});
+	    		   brite.display("GroupDialog",$mainview,{title : "Edit Group",group : group});
 	    	   })
 	       },
 	         

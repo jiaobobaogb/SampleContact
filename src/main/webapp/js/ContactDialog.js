@@ -1,6 +1,6 @@
-brite.registerView("ContactOperate", {emptyParent:false}, {
+brite.registerView("ContactDialog", {emptyParent:false}, {
 	create: function(data,config){
-		return render("tmpl-ContactOperate", {data : data});
+		return render("tmpl-ContactDialog", {data : data});
    },
    
    postDisplay: function(){
@@ -9,9 +9,9 @@ brite.registerView("ContactOperate", {emptyParent:false}, {
    
    events: {
 	       "click; .form-actions .add": function(event){
-	    	   var contactOperate = this;
-	    	   var firstName = contactOperate.$el.find("#firstName").val();
-	    	   var lastName = contactOperate.$el.find("#lastName").val();
+	    	   var ContactDialog = this;
+	    	   var firstName = ContactDialog.$el.find("#firstName").val();
+	    	   var lastName = ContactDialog.$el.find("#lastName").val();
 	    	   
 	    	   var legal = true;
 	    	   if(firstName.length <= 0) {
@@ -34,10 +34,10 @@ brite.registerView("ContactOperate", {emptyParent:false}, {
 	       },
 	
 	       "click; .form-actions .update": function(event){
-	    	   var contactOperate = this;
-	    	   var firstName = contactOperate.$el.find("#firstName").val();
-	    	   var lastName = contactOperate.$el.find("#lastName").val();
-	    	   var contactId = contactOperate.$el.find("#firstName").attr("contactId");
+	    	   var ContactDialog = this;
+	    	   var firstName = ContactDialog.$el.find("#firstName").val();
+	    	   var lastName = ContactDialog.$el.find("#lastName").val();
+	    	   var contactId = ContactDialog.$el.find("#firstName").attr("contactId");
 	    	   
 	    	   var legal = true;
 	    	   if(firstName.length <= 0) {

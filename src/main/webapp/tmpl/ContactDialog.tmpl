@@ -1,9 +1,9 @@
-<script id="tmpl-ContactOperate" type="text/html">
-<div class="ContactOperate">
-	<div class="ContactOperateShadow">
+<script id="tmpl-ContactDialog" type="text/html">
+<div class="ContactDialog">
+	<div class="ContactDialogShadow">
 	</div>
 	{{#if data.changeGroup}}
-		<div class="ContactOperate-DialogPrompt" >
+		<div class="ContactDialog-DialogPrompt" >
 			<div class="form-horizontal">
 				<legend data-contact-id="{{data.contactId}}">{{data.title}}</legend>
 				
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 	{{else}}
-		<div class="ContactOperate-DialogPrompt">
+		<div class="ContactDialog-DialogPrompt">
 			<div class="form-horizontal">
 				<legend>{{data.title}}</legend>
 				

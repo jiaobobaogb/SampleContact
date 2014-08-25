@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import com.google.inject.Singleton;
 import com.samplecontact.entity.Contact;
-import com.samplecontact.entity.Groups;
+import com.samplecontact.entity.Group;
 
 @Singleton
 public class ContactDao extends BaseHibernateDao<Contact>{
@@ -20,7 +20,7 @@ public class ContactDao extends BaseHibernateDao<Contact>{
 	private GroupDao groupDao;
 	
 	public Contact getContact(Long id) {
-		Contact contact = get(id);
+		Contact contact = daoHelper.get(entityClass, id);
 		return contact;
 	}
 	
@@ -28,7 +28,7 @@ public class ContactDao extends BaseHibernateDao<Contact>{
 		Contact contact = new Contact();
 		contact.setFirstName(firstName);
 		contact.setLastName(lastName);
-		save(contact);
+		daoHelper.save(contact);
 		return true;
 	}
 
@@ -39,16 +39,16 @@ public class ContactDao extends BaseHibernateDao<Contact>{
 	}
 
 	public boolean updateContact(Long id, String firstName, String lastName) {
-		Contact contact = get(id);
+		Contact contact =daoHelper.get(entityClass, id);
 		contact.setFirstName(firstName);
 		contact.setLastName(lastName);
-		update(contact);
+		daoHelper.update(contact);
 		return true;
 	}
 
 	public boolean deleteContact(Long contactId) {
 		Contact contact = getContact(contactId);
-		delete(contact);
+		daoHelper.delete(contact);
 		relationDao.deleteContact(contactId);
 		return true;
 	}
@@ -65,12 +65,12 @@ public class ContactDao extends BaseHibernateDao<Contact>{
 		return true;
 	}
 	
-	public List<Groups> getContactGroups(Long contactId){
+	public List<Group> getContactGroups(Long contactId){
 		List<Long> groupIds = relationDao.listContactGroupIds(contactId);
-		List<Groups> groups = new ArrayList<Groups>();
+		List<Group> groups = new ArrayList<Group>();
 		if(groupIds != null && groupIds.size() > 0){
 			for(Long groupId : groupIds){
-				Groups group = groupDao.get(groupId);
+				Group group = groupDao.getGroup(groupId);
 				groups.add(group);
 			}
 		}

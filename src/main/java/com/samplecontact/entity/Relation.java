@@ -1,8 +1,10 @@
 package com.samplecontact.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="relation_t")
 public class Relation extends BaseEntity{
 
 	private Long contactId;
